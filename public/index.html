@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Ocean Plastic Hunter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#"><span class="brand-mark">≈</span><span>OCEAN<span class="brand-light">HUNTER</span><small>AI CLEANING SYSTEM</small></span></a>
+      <div class="side-label">WORKSPACE</div>
+      <a class="nav-item active" href="#overview">▦ <span>Overview</span></a>
+      <a class="nav-item" href="#machines">▣ <span>Machine control</span></a>
+      <a class="nav-item" href="#camera">◎ <span>AI camera</span></a>
+      <a class="nav-item" href="#monitoring">⌁ <span>Monitoring</span></a>
+      <div class="sidebar-bottom">
+        <div class="side-label">SYSTEM</div>
+        <div class="connection-card"><span class="pulse"></span><div><b id="connectionText">Demo mode</b><small id="connectionSub">Simulated data</small></div></div>
+        <p class="sidebar-note">Protecting oceans through intelligent technology.</p>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div><div class="eyebrow">OCEAN OPERATIONS / CONTROL ROOM</div><h1>Command dashboard</h1></div>
+        <div class="top-actions"><span class="date-chip" id="clock">--:--:--</span><span class="status-pill" id="systemPill">● DEMO</span></div>
+      </header>
+
+      <section class="hero" id="overview">
+        <div class="hero-copy"><div class="hero-tag">✦ INTELLIGENT OCEAN CLEANUP</div><h2>A cleaner ocean<br>starts with <em>action.</em></h2><p>Monitor your machines, detect floating plastic and coordinate collection from one control centre.</p><a class="hero-link" href="#machines">Go to machine controls <b>↗</b></a></div>
+        <div class="hero-art"><div class="orb orb-one"></div><div class="orb orb-two"></div><div class="wave wave-one"></div><div class="wave wave-two"></div><div class="art-label"><span>AI</span><small>OCEAN<br>INTELLIGENCE</small></div></div>
+      </section>
+
+      <section class="metric-grid">
+        <article class="metric-card"><div class="metric-top"><span>CONNECTED MACHINES</span><span class="metric-icon">▣</span></div><strong id="connectedCount">0/2</strong><small>Machine units online</small></article>
+        <article class="metric-card"><div class="metric-top"><span>PLASTIC DETECTED</span><span class="metric-icon">⌕</span></div><strong id="plasticCount">0</strong><small>Objects identified by AI</small></article>
+        <article class="metric-card"><div class="metric-top"><span>PLASTIC COLLECTED</span><span class="metric-icon">♻</span></div><strong><span id="collectedKg">0.00</span><i>kg</i></strong><small>Total reported by machines</small></article>
+        <article class="metric-card"><div class="metric-top"><span>CAMERA STATUS</span><span class="metric-icon">◉</span></div><strong class="text-metric" id="cameraStatus">NOT SET</strong><small>ESP32-CAM stream</small></article>
+      </section>
+
+      <section class="section-heading" id="machines"><div><div class="eyebrow">FLEET MANAGEMENT</div><h2>Machine control</h2></div><span class="section-caption">2 registered units</span></section>
+      <section class="machine-grid">
+        <article class="machine-card" data-machine="machine1">
+          <div class="machine-head"><div class="machine-symbol">01</div><div class="machine-title"><h3>Ocean machine 01</h3><small>ESP32 controller · Unit 01</small></div><span class="machine-status offline" id="machine1Status">OFFLINE</span></div>
+          <div class="machine-stats"><div><small>BATTERY</small><b id="machine1Battery">—</b></div><div><small>COLLECTED</small><b><span id="machine1Collected">0.00</span> kg</b></div><div><small>MODE</small><b id="machine1Mode">MANUAL</b></div></div>
+          <div class="control-row"><label for="machine1ModeSelect">Control mode</label><select id="machine1ModeSelect"><option value="MANUAL">Manual</option><option value="AUTO">Automatic</option></select></div>
+          <div class="button-row"><button class="btn btn-primary" data-command="START">Start</button><button class="btn btn-secondary" data-command="STOP">Stop</button><button class="btn btn-ghost" data-command="COLLECT">Collect</button></div>
+          <div class="direction-pad"><button data-command="FORWARD">▲</button><div><button data-command="LEFT">◀</button><button data-command="BACKWARD">▼</button><button data-command="RIGHT">▶</button></div></div>
+          <div class="machine-foot" id="machine1Updated">Waiting for machine telemetry</div>
+        </article>
+        <article class="machine-card" data-machine="machine2">
+          <div class="machine-head"><div class="machine-symbol symbol-two">02</div><div class="machine-title"><h3>Ocean machine 02</h3><small>ESP32 controller · Unit 02</small></div><span class="machine-status offline" id="machine2Status">OFFLINE</span></div>
+          <div class="machine-stats"><div><small>BATTERY</small><b id="machine2Battery">—</b></div><div><small>COLLECTED</small><b><span id="machine2Collected">0.00</span> kg</b></div><div><small>MODE</small><b id="machine2Mode">MANUAL</b></div></div>
+          <div class="control-row"><label for="machine2ModeSelect">Control mode</label><select id="machine2ModeSelect"><option value="MANUAL">Manual</option><option value="AUTO">Automatic</option></select></div>
+          <div class="button-row"><button class="btn btn-primary" data-command="START">Start</button><button class="btn btn-secondary" data-command="STOP">Stop</button><button class="btn btn-ghost" data-command="COLLECT">Collect</button></div>
+          <div class="direction-pad"><button data-command="FORWARD">▲</button><div><button data-command="LEFT">◀</button><button data-command="BACKWARD">▼</button><button data-command="RIGHT">▶</button></div></div>
+          <div class="machine-foot" id="machine2Updated">Waiting for machine telemetry</div>
+        </article>
+      </section>
+
+      <section class="section-heading" id="camera"><div><div class="eyebrow">VISION & RECOGNITION</div><h2>AI camera monitor</h2></div><span class="section-caption">ESP32-CAM</span></section>
+      <section class="camera-grid">
+        <article class="panel camera-panel"><div class="panel-head"><div><h3>Live camera feed</h3><small>Enter the stream URL served by your ESP32-CAM</small></div><span class="live-tag">● CAMERA</span></div><div class="camera-screen" id="cameraScreen"><div class="camera-placeholder"><div class="camera-symbol">◎</div><b>Camera feed not connected</b><span>Enter your ESP32-CAM stream address below.</span></div><img id="cameraImage" alt="ESP32-CAM live stream" hidden></div><form id="cameraForm" class="camera-url-form"><input id="cameraUrl" type="url" placeholder="http://192.168.1.50/stream"><button class="btn btn-primary">Connect camera</button></form></article>
+        <article class="panel detection-panel"><div class="panel-head"><div><h3>AI detection</h3><small>Results received from your AI server</small></div><span class="ai-chip">✦ AI</span></div><div class="detection-number" id="detectionNumber">0</div><div class="detection-label">PLASTIC OBJECTS DETECTED</div><div class="detection-detail"><span>Last detection</span><b id="lastLabel">No detections yet</b></div><div class="detection-detail"><span>Confidence</span><b id="confidence">—</b></div><p class="small-note">The camera stream does not perform AI by itself. Connect a Python/OpenCV/YOLO service to publish detection results to MQTT.</p></article>
+      </section>
+
+      <section class="section-heading" id="monitoring"><div><div class="eyebrow">SYSTEM HEALTH</div><h2>Live monitoring</h2></div></section>
+      <section class="panel activity-panel"><div class="panel-head"><div><h3>System activity</h3><small>Latest dashboard events</small></div><button class="btn btn-ghost btn-small" id="clearLog">Clear log</button></div><div id="activityLog" class="activity-log"><div class="log-entry"><span class="log-dot"></span><span>Dashboard loaded. Waiting for hardware connection.</span><time>NOW</time></div></div></section>
+
+      <footer><span>AI OCEAN PLASTIC HUNTER</span><span>Built for cleaner oceans · Prototype dashboard</span></footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <div class="emergency-bar"><span><b>SAFETY</b> Always keep a physical emergency-stop switch on the machine.</span><button id="emergencyStop" class="btn btn-danger">■ EMERGENCY STOP ALL</button></div>
+  <script src="/socket.io/socket.io.js"></script><script src="/app.js"></script>
+</body>
+</html>
